@@ -1,5 +1,10 @@
+import Foods from "./components/foods";
 function App() {
-  return <div>hello</div>;
+  return (
+    <main className="container">
+      <Foods />
+    </main>
+  );
 }
 
 export default App;
