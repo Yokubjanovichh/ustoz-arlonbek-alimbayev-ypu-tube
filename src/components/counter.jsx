@@ -1,44 +1,29 @@
-import React, { Component } from "react";
-
-class Counter extends Component {
-  // state bu o'zgaruvchilarimizni saqlab turadigan object
-  state = {
-    count: 0,
-  };
-  getBadgeClass() {
+const Counter = ({ counter, onDecrement, onIncrement, onDelete }) => {
+  const getBadgeClass = () => {
     let className = "badge m-2 bg-";
-    className += this.state.count === 0 ? "warning" : "danger";
+    className += counter.value === 0 ? "warning" : "danger";
     return className;
-  }
-  handleEcrement = () => {
-    this.setState({ count: this.state.count + 1 }, () => {
-      console.log(this.state.count);
-    });
   };
-  handleDecrement = () => {
-    this.setState({ count: this.state.count - 1 }, () => {
-      console.log(this.state.count);
-    });
+  const formatNumber = () => {
+    const { value } = counter;
+    return value === 0 ? "zero" : value;
   };
-  render() {
-    return (
-      <>
-        <button onClick={this.state.count !== 0 ? this.handleDecrement : null} className="btn btn-info m-2">
-          Decrement
-        </button>
-        <span className={this.getBadgeClass()}>{this.state.count}</span>
-        <button onClick={this.handleEcrement} className="btn btn-primary m-2">
-          Increment
-        </button>
-      </>
-    ); // this bu Counter
-  }
 
-  formatNumber() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
-  }
-}
+  return (
+    <div>
+      <button onClick={() => onDecrement(counter)} className="btn btn-secondary m-2">
+        Decrement
+      </button>
+      <span className={getBadgeClass()}>{formatNumber()}</span>
+      <button onClick={() => onIncrement(counter)} className="btn btn-primary m-2">
+        Increment
+      </button>
+      <button onClick={() => onDelete(counter.id)} className="btn btn-danger m-2">
+        Delete
+      </button>
+    </div>
+  );
+};
 
 export default Counter;
 
