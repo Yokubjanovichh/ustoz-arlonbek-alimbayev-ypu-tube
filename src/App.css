@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.like-btn {
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+
+.like-btn:active {
+  transform: scale(0.9);
+}
+
+.list-group-item {
+  cursor: pointer;
+  display: flex !important;
+  justify-content: space-between;
+}
